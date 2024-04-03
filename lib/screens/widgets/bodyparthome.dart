@@ -17,16 +17,16 @@ class HomeBodypart extends StatelessWidget {
         child: Column(
           children: [
             AppText(
-              data: "36 C",
+              data: "36 °C",
               color: Colors.white,
               fw: FontWeight.bold,
-              size: 30,
+              size: 35,
             ),
             AppText(
               data: 'Thunder',
               color: Colors.white38,
               fw: FontWeight.normal,
-              size: 20,
+              size: 25,
             ),
             AppText(
               data: DateTime.now().toString(),

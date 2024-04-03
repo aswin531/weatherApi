@@ -32,9 +32,18 @@ class AppText extends StatelessWidget {
     return Text(data.toString(),
         textAlign: textAlign,
         style: TextStyle(
-            fontSize: size,
-            color: color,
-            fontWeight: fw,
-            fontFamily: " Roboto"));
+          fontSize: size,
+          color: color,
+          fontWeight: fw,
+        ));
+  }
+
+  Widget subheadText(String text) {
+    return Text(text,
+        style: GoogleFonts.lato(
+          fontSize: size,
+          color: color,
+          fontWeight: fw,
+        ));
   }
 }
