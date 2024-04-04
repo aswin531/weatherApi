@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:weatherapp/screens/widgets/headparthome.dart';
-import 'package:weatherapp/services/locationprovider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

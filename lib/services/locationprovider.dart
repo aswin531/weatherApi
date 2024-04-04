@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weatherapp/services/locationservices.dart';
 
 class LocationProvider with ChangeNotifier {
   // permission ask ==> fetch the location
 
   Position? _currentPosition;
   Position? get currentPosition => _currentPosition;
+  final LocationService _locationService = LocationService();
+  Placemark? _currentlocationName;
+  //getter
+  Placemark? get currentLocationName => _currentlocationName;
 
   //getting location req
 
@@ -37,6 +43,10 @@ class LocationProvider with ChangeNotifier {
     // condition we have the permissions
     _currentPosition = await Geolocator.getCurrentPosition();
     print(_currentPosition);
+    _currentlocationName =
+        await _locationService.getLocationName(_currentPosition);
+    print(_currentlocationName);
+
     notifyListeners();
   }
 }

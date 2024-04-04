@@ -15,11 +15,12 @@ class HeadPartHome extends StatefulWidget {
 }
 
 class _HeadPartHomeState extends State<HeadPartHome> {
-   @override
+  @override
   void initState() {
     Provider.of<LocationProvider>(context, listen: false).getPosition();
     super.initState();
   }
+
   bool clicked = false;
   @override
   Widget build(BuildContext context) {
