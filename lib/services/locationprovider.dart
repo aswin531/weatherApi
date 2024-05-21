@@ -48,7 +48,6 @@ class LocationProvider with ChangeNotifier {
     _currentlocationName =
         await _locationService.getLocationName(_currentPosition);
     print(_currentlocationName);
-
     notifyListeners();
   }
 }
