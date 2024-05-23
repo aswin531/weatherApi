@@ -25,7 +25,7 @@ class _HeadPartHomeState extends State<HeadPartHome> {
         var city = locationProvider.currentLocationName!.locality;
         if (city != null) {
           Provider.of<WeatherServiceProvider>(context, listen: false)
-              .fetchWeatherDataByCity(city);
+              .fetchWeatherDataByCity('dubai');
         }
       }
     });
@@ -100,7 +100,25 @@ class _HeadPartHomeState extends State<HeadPartHome> {
               ),
             ),
           ),
-        // Align(alignment: Alignment.topRight, child: Image.asset(thunderBlack)),
+        // Consumer<WeatherServiceProvider>(
+        //   builder: (context, weatherProvider, child) {
+        //     if (weatherProvider.weatherData == null) {
+        //       return Align(
+        //         alignment: Alignment.topRight,
+        //         child: CircularProgressIndicator(),
+        //       );
+        //     }
+
+        //     String weatherCondition = weatherProvider.weatherData!.condition ?? 'Unknown';
+        //     String imagePath = weatherImagePaths[weatherCondition] ?? 'assets/images/default_image.png';
+
+        //     return Align(
+        //       alignment: Alignment.topRight,
+        //       child: Image.asset(imagePath),
+        //     );
+        //   },
+        // ),
+        
         const HomeBodypart(),
         const TemperatureCard(),
       ],

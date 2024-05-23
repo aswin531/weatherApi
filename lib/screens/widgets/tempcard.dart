@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weatherapp/utils/apptext.dart';
 
 class TemperatureCard extends StatelessWidget {
-  const TemperatureCard({super.key});
+  const  TemperatureCard({super.key});
 
   @override
   Widget build(BuildContext context) {
