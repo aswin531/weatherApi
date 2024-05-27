@@ -25,7 +25,7 @@ class _HeadPartHomeState extends State<HeadPartHome> {
         var city = locationProvider.currentLocationName!.locality;
         if (city != null) {
           Provider.of<WeatherServiceProvider>(context, listen: false)
-              .fetchWeatherDataByCity('dubai');
+              .fetchWeatherDataByCity(city);
         }
       }
     });
@@ -118,7 +118,7 @@ class _HeadPartHomeState extends State<HeadPartHome> {
         //     );
         //   },
         // ),
-        
+
         const HomeBodypart(),
         const TemperatureCard(),
       ],

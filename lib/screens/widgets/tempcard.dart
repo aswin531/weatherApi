@@ -26,7 +26,7 @@ class TemperatureCard extends StatelessWidget {
                     Column(
                       children: [
                         AppText(
-                          data: "Temp",
+                          data: "Max Temp",
                           size: 20,
                         ),
                         AppText(
