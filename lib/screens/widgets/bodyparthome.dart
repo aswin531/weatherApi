@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp/services/weatherserviceprovider.dart';
 import 'package:weatherapp/utils/apptext.dart';
@@ -14,7 +15,9 @@ class HomeBodypart extends StatelessWidget {
         final weatherData = weatherServiceProvider.weather;
         if (weatherData == null) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              color: Colors.blueAccent,
+            ),
           );
         }
         return Align(
@@ -39,7 +42,7 @@ class HomeBodypart extends StatelessWidget {
                   size: 25,
                 ),
                 AppText(
-                  data: DateTime.now().toString(),
+                  data: DateFormat('dd/MM/yyyy').format(DateTime.now()),
                   color: accents,
                 ),
               ],

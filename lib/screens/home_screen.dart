@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp/screens/widgets/headparthome.dart';
+import 'package:weatherapp/services/imagehelperservice.dart';
 import 'package:weatherapp/services/weatherserviceprovider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,14 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(),
       body: Consumer<WeatherServiceProvider>(
         builder: (context, weatherServiceProvider, child) {
-          // String weatherCondition = weatherServiceProvider.fetchWeatherDataByCity?.condition?? "unknown"
+          final weatherCondition = weatherServiceProvider.weather?.weather?.first.main ?? 'unknown';
+          String bgImage =
+              ImageHelper.getBgImage(weatherCondition.toString());
           return Container(
             height: size.height,
             width: size.width,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/img/download (6).jpg'),
-                    fit: BoxFit.cover)),
+                    image: AssetImage(bgImage), fit: BoxFit.cover)),
             child: const HeadPartHome(),
           );
         },
