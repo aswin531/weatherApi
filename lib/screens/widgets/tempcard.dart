@@ -15,7 +15,7 @@ class TemperatureCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)),
           width: double.infinity,
           height: 300,
-          child: Column(
+          child: const Column(
             children: [
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.start,

@@ -4,14 +4,9 @@ import 'package:weatherapp/screens/widgets/headparthome.dart';
 import 'package:weatherapp/services/imagehelperservice.dart';
 import 'package:weatherapp/services/weatherserviceprovider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -21,15 +16,19 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Consumer<WeatherServiceProvider>(
         builder: (context, weatherServiceProvider, child) {
           final weatherCondition =
-              weatherServiceProvider.weather?.main ?? 'unknown';
-          final bgImage = ImageHelper.getBgImage(weatherCondition.toString());
+              weatherServiceProvider.weather?.weather?.first.main ?? 'unknown';
+          //print('Weather Condition: $weatherCondition');
+          //final bgImage = ImageHelper.getBgImage(weatherCondition.toString());
+          final bgColor = ColorSelector.getColor(weatherCondition.toString());
+          print('Background Image: $bgColor');
 
           return Container(
             height: size.height,
             width: size.width,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(bgImage), fit: BoxFit.cover)),
+            decoration: BoxDecoration(color: bgColor
+                // image: DecorationImage(
+                //     image: AssetImage(bgImage), fit: BoxFit.cover)
+                ),
             child: const HeadPartHome(),
           );
         },

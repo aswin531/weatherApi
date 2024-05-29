@@ -16,7 +16,7 @@ class HomeBodypart extends StatelessWidget {
         if (weatherData == null) {
           return const Center(
             child: CircularProgressIndicator(
-              color: Colors.blueAccent,
+              color: Colors.blueGrey,
             ),
           );
         }
