@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weatherapp/screens/widgets/headparthome.dart';
+import 'package:weatherapp/services/weatherserviceprovider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,21 +11,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(),
-      body: Container(
-        height: size.height,
-        width: size.width,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/img/download (6).jpg'),
-                fit: BoxFit.cover)),
-        child: const HeadPartHome(),
+      body: Consumer<WeatherServiceProvider>(
+        builder: (context, weatherServiceProvider, child) {
+          // String weatherCondition = weatherServiceProvider.fetchWeatherDataByCity?.condition?? "unknown"
+          return Container(
+            height: size.height,
+            width: size.width,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/img/download (6).jpg'),
+                    fit: BoxFit.cover)),
+            child: const HeadPartHome(),
+          );
+        },
       ),
     );
   }
