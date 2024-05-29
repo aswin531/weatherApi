@@ -20,9 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(),
       body: Consumer<WeatherServiceProvider>(
         builder: (context, weatherServiceProvider, child) {
-          final weatherCondition = weatherServiceProvider.weather?.weather?.first.main ?? 'unknown';
-          String bgImage =
-              ImageHelper.getBgImage(weatherCondition.toString());
+          final weatherCondition =
+              weatherServiceProvider.weather?.main ?? 'unknown';
+          final bgImage = ImageHelper.getBgImage(weatherCondition.toString());
+
           return Container(
             height: size.height,
             width: size.width,
