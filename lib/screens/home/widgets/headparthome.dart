@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherapp/screens/widgets/bodyparthome.dart';
-import 'package:weatherapp/screens/widgets/tempcard.dart';
+import 'package:weatherapp/screens/home/widgets/bodyparthome.dart';
+import 'package:weatherapp/screens/home/widgets/tempcard.dart';
+import 'package:weatherapp/screens/search/search.dart';
 import 'package:weatherapp/services/locationprovider.dart';
 import 'package:weatherapp/services/weatherserviceprovider.dart';
 import 'package:weatherapp/utils/apptext.dart';
@@ -35,19 +36,24 @@ class _HeadPartHomeState extends State<HeadPartHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.2,
+          height: MediaQuery.of(context).size.height * 0.14,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              IconButton(
+                enableFeedback: true,
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const CustomSearchBar(),
+                  ));
+                },
+                icon: const Icon(FontAwesomeIcons.plus),
+              ),
               Row(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(FontAwesomeIcons.locationDot),
-                  ),
                   Consumer<LocationProvider>(
                     builder: (context, locationProvider, child) {
                       String locationCity =
@@ -63,12 +69,12 @@ class _HeadPartHomeState extends State<HeadPartHome> {
                             fw: FontWeight.w600,
                             size: 23,
                           ),
-                          AppText(
-                            data: 'Good Night',
-                            color: Colors.white,
-                            fw: FontWeight.w600,
-                            size: 16,
-                          ),
+                          // AppText(
+                          //   data: 'Good Night',
+                          //   color: Colors.white,
+                          //   fw: FontWeight.w600,
+                          //   size: 16,
+                          // ),
                         ],
                       );
                     },
@@ -76,49 +82,12 @@ class _HeadPartHomeState extends State<HeadPartHome> {
                 ],
               ),
               IconButton(
-                onPressed: () {
-                  setState(() {
-                    clicked = !clicked;
-                  });
-                },
+                onPressed: () {},
                 icon: const Icon(Icons.search),
               ),
             ],
           ),
         ),
-        if (clicked)
-          Positioned(
-            left: 20,
-            right: 20,
-            top: 150,
-            child: TextFormField(
-              decoration: InputDecoration(
-                focusedBorder: InputBorder.none,
-                border: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
-          ),
-        // Consumer<WeatherServiceProvider>(
-        //   builder: (context, weatherProvider, child) {
-        //     if (weatherProvider.weatherData == null) {
-        //       return Align(
-        //         alignment: Alignment.topRight,
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     }
-
-        //     String weatherCondition = weatherProvider.weatherData!.condition ?? 'Unknown';
-        //     String imagePath = weatherImagePaths[weatherCondition] ?? 'assets/images/default_image.png';
-
-        //     return Align(
-        //       alignment: Alignment.topRight,
-        //       child: Image.asset(imagePath),
-        //     );
-        //   },
-        // ),
-
         const HomeBodypart(),
         const TemperatureCard(),
       ],

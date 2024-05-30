@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherapp/screens/home_screen.dart';
+import 'package:weatherapp/screens/home/home_screen.dart';
 import 'package:weatherapp/services/locationprovider.dart';
 import 'package:weatherapp/services/weatherserviceprovider.dart';
 import 'package:weatherapp/utils/colors.dart';
