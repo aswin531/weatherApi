@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weatherapp/services/locationservices.dart';
+import 'package:weatherapp/providers/locationservices.dart';
 
 class LocationProvider with ChangeNotifier {
   // permission ask ==> fetch the location

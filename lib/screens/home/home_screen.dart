@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp/screens/home/widgets/headparthome.dart';
-import 'package:weatherapp/services/imagehelperservice.dart';
-import 'package:weatherapp/services/weatherserviceprovider.dart';
+import 'package:weatherapp/providers/imagehelperservice.dart';
+import 'package:weatherapp/providers/weatherserviceprovider.dart';
 import 'package:weatherapp/screens/home/widgets/bodyparthome.dart';
 import 'package:weatherapp/screens/home/widgets/tempcard.dart';
 import 'package:weatherapp/utils/colors.dart';
@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: transparent,
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Consumer<WeatherServiceProvider>(
           builder: (context, weatherServiceProvider, child) {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weatherapp/providers/bottomnavbar.dart';
 import 'package:weatherapp/screens/bottom_nav_bar.dart';
 import 'package:weatherapp/screens/home/home_screen.dart';
-import 'package:weatherapp/services/locationprovider.dart';
-import 'package:weatherapp/services/weatherserviceprovider.dart';
+import 'package:weatherapp/providers/locationprovider.dart';
+import 'package:weatherapp/providers/weatherserviceprovider.dart';
 import 'package:weatherapp/utils/colors.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => BottomNavBarProvider(),),
         ChangeNotifierProvider(create: (context) => LocationProvider()),
         ChangeNotifierProvider(create: (context) => WeatherServiceProvider(),)
       ],
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const BottomNavBarScreen(),
+        home:BottomNavBarScreen(),
       ),
     );
   }

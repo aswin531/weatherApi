@@ -1,37 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
+import 'package:weatherapp/providers/bottomnavbar.dart';
 import 'package:weatherapp/screens/home/home_screen.dart';
 import 'package:weatherapp/screens/search/search.dart';
+import 'package:weatherapp/screens/settings/settings.dart';
 import 'package:weatherapp/utils/colors.dart';
 
-class BottomNavBarScreen extends StatefulWidget {
-  const BottomNavBarScreen({super.key});
-
-  @override
-  State<BottomNavBarScreen> createState() => _BottomNavBarScreenState();
-}
-
-class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
-  int _selectedIndex = 0;
-  PageController _pageController = PageController(initialPage: 0);
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
+class BottomNavBarScreen extends StatelessWidget {
+  BottomNavBarScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final bottomNavBarProvider = Provider.of<BottomNavBarProvider>(context);
+    final pageController =
+        PageController(initialPage: bottomNavBarProvider.selectedIndex);
+
     return Scaffold(
       body: PageView(
-        controller: _pageController,
         onPageChanged: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+          bottomNavBarProvider.setSelectedIndex(index);
         },
-        children: const [HomeScreen(), CustomSearchBar()],
+        children: const [HomeScreen(), CustomSearchBar(), SettingsScreen()],
       ),
       bottomNavigationBar: Container(
         color: Colors.black,
@@ -39,15 +28,13 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
           padding: const EdgeInsets.all(8.0),
           child: GNav(
               activeColor: bgFog,
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.transparent,
               tabBackgroundColor: bgCloudy,
               color: primary,
-              gap: 8,
+              gap: 08,
               onTabChange: (index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-                _pageController.jumpToPage(index);
+                bottomNavBarProvider.setSelectedIndex(index);
+                pageController.jumpToPage(index);
               },
               padding: const EdgeInsets.all(16),
               tabs: const [
@@ -57,7 +44,12 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
                 ),
                 GButton(
                   icon: Icons.search,
+                  semanticLabel: "Search Page",
                   text: 'Search',
+                ),
+                GButton(
+                  icon: Icons.settings,
+                  text: 'Settings',
                 )
               ]),
         ),

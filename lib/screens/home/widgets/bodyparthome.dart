@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherapp/services/weatherserviceprovider.dart';
+import 'package:weatherapp/providers/weatherserviceprovider.dart';
 import 'package:weatherapp/utils/apptext.dart';
 import 'package:weatherapp/utils/colors.dart';
 

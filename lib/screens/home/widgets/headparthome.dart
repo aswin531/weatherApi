@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherapp/services/locationprovider.dart';
-import 'package:weatherapp/services/weatherserviceprovider.dart';
+import 'package:weatherapp/providers/locationprovider.dart';
+import 'package:weatherapp/providers/weatherserviceprovider.dart';
 import 'package:weatherapp/utils/apptext.dart';
 
 class HeadPartHome extends StatefulWidget {
