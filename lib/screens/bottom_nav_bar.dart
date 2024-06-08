@@ -44,7 +44,10 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
               color: primary,
               gap: 8,
               onTabChange: (index) {
-                _selectedIndex = index;
+                setState(() {
+                  _selectedIndex = index;
+                });
+                _pageController.jumpToPage(index);
               },
               padding: const EdgeInsets.all(16),
               tabs: const [
