@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const Color green = Colors.green;
 const Color grey = Colors.grey;
 const Color transparent = Colors.transparent;
-const Color primary = Colors.white;
+const Color primary = Color.fromRGBO(255, 255, 255, 1);
 const Color secondary = Colors.lightBlue;
 const Color accents = Color(0xFF247BA0);
 //Sunny
@@ -11,7 +11,7 @@ const Color bgSunny = Colors.lightBlueAccent;// (Light and calming blue)
 const Color bgSunnyWarm = Colors.amberAccent;// (Warm and inviting yellow)
 
 //Cloudy:
-const Color bgCloudy = Colors.grey;// (Neutral and subdued)
+ Color bgCloudy = Colors.grey.shade800;// (Neutral and subdued)
 const Color bgCloudyCalm = Colors.blueGrey;// (Calming and slightly cool)
 
 //Rainy:

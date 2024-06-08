@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weatherapp/screens/bottom_nav_bar.dart';
 import 'package:weatherapp/screens/home/home_screen.dart';
 import 'package:weatherapp/services/locationprovider.dart';
 import 'package:weatherapp/services/weatherserviceprovider.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: const BottomNavBarScreen(),
       ),
     );
   }
